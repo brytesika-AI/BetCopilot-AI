@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetCopilot AI</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark">B</div>
+          <div>
+            <p class="eyebrow">BetCopilot AI</p>
+            <h1>AI-Powered Betting Intelligence</h1>
+          </div>
+        </div>
+        <nav class="top-actions" aria-label="Primary">
+          <a href="#results-anchor">Results</a>
+          <a href="#eval-anchor">Eval Demo</a>
+        </nav>
+      </header>
+
+      <main class="page-flow">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="hero-kicker">Modern applied AI product demo</p>
+            <h2>Turn noisy betting language into structured, trusted intelligence.</h2>
+            <p class="hero-text">
+              BetCopilot AI extracts bet candidates, normalizes markets, enriches live odds,
+              applies QA, and presents the result in a polished operator-friendly view.
+            </p>
+            <div class="example-chip-row">
+              <button class="example-chip" data-example="LeBron over 27.5 points and Lakers moneyline tonight">LeBron over 27.5 points and Lakers moneyline tonight</button>
+              <button class="example-chip" data-example="Arsenal to win and both teams to score">Arsenal to win and both teams to score</button>
+              <button class="example-chip" data-example="Analyze this bet slip screenshot">Analyze this bet slip screenshot</button>
+            </div>
+          </div>
+
+          <section class="hero-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-eyebrow">Analyze Input</p>
+                <h3>Start with text, a URL, or screenshot context</h3>
+              </div>
+              <span class="shell-badge">Recruiter-ready MVP</span>
+            </div>
+
+            <div class="segmented-control" role="tablist" aria-label="Input mode selector">
+              <button type="button" class="segment is-active" data-mode="chat_text">Text</button>
+              <button type="button" class="segment" data-mode="url">URL</button>
+              <button type="button" class="segment" data-mode="screenshot">Screenshot</button>
+            </div>
+
+            <form id="intake-form" class="intake-form">
+              <input id="source-type" type="hidden" value="chat_text" />
+
+              <label class="field">
+                <span>Input</span>
+                <textarea id="raw-text" rows="7" placeholder="Paste text, article excerpts, or social betting chatter here.">LeBron over 27.5 points and Lakers moneyline tonight</textarea>
+              </label>
+
+              <div class="input-meta-grid">
+                <label class="field">
+                  <span>Source label</span>
+                  <input id="source-label" type="text" placeholder="Recruiter demo sample" />
+                </label>
+
+                <label class="field url-only is-hidden" id="url-field">
+                  <span>URL</span>
+                  <input id="source-url" type="url" placeholder="https://example.com/article" />
+                </label>
+              </div>
+
+              <div class="upload-panel screenshot-only is-hidden" id="upload-panel">
+                <div class="upload-copy">
+                  <p class="upload-title">Screenshot Upload</p>
+                  <p class="upload-subtitle">Attach a bet slip or odds screen for the Phase 2 multimodal path.</p>
+                </div>
+                <label class="upload-button">
+                  <input id="screenshot-file" type="file" accept="image/*" />
+                  <span>Select image</span>
+                </label>
+                <p id="upload-filename" class="upload-filename">No file selected</p>
+              </div>
+
+              <div class="primary-actions">
+                <button type="submit" class="primary-button" id="analyze-button">Analyze</button>
+                <button type="button" class="ghost-button" id="sample-button">Try an example</button>
+              </div>
+            </form>
+          </section>
+        </section>
+
+        <section class="results-shell" id="results-anchor">
+          <div class="results-header">
+            <div>
+              <p class="section-eyebrow">Results</p>
+              <h3>BetCopilot AI response</h3>
+            </div>
+            <button type="button" class="ghost-button is-hidden" id="copy-json-button">Copy technical JSON</button>
+          </div>
+
+          <div id="summary-panel" class="summary-panel">
+            <div class="empty-state">
+              <h4>Ready for analysis</h4>
+              <p>Run a sample or submit your own betting text to see structured bets, QA, odds enrichment, and technical traceability.</p>
+            </div>
+          </div>
+
+          <div class="results-grid">
+            <section class="content-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="section-eyebrow">Bet Candidates</p>
+                  <h4>Structured extraction</h4>
+                </div>
+              </div>
+              <div id="bet-cards" class="stack-list">
+                <div class="empty-state compact">
+                  <p>No candidates yet.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="content-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="section-eyebrow">Live Odds</p>
+                  <h4>Enrichment and market match</h4>
+                </div>
+              </div>
+              <div id="odds-panel" class="stack-list">
+                <div class="empty-state compact">
+                  <p>Odds enrichment appears here after analysis.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="content-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="section-eyebrow">QA and Trust</p>
+                  <h4>Validation outcomes</h4>
+                </div>
+              </div>
+              <div id="qa-panel" class="stack-list">
+                <div class="empty-state compact">
+                  <p>Trust and quality checks will appear here.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="content-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="section-eyebrow">Explanation</p>
+                  <h4>Why the system inferred these bets</h4>
+                </div>
+              </div>
+              <div id="explanation-panel" class="explanation-panel">
+                <div class="empty-state compact">
+                  <p>Natural-language interpretation will appear here.</p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <section class="technical-panel">
+            <details id="technical-drawer">
+              <summary>View technical details</summary>
+              <div class="technical-grid">
+                <section class="technical-card">
+                  <h5>Trace</h5>
+                  <pre id="trace-output">Awaiting analysis...</pre>
+                </section>
+                <section class="technical-card">
+                  <h5>Structured JSON</h5>
+                  <pre id="json-output">Awaiting analysis...</pre>
+                </section>
+              </div>
+            </details>
+          </section>
+        </section>
+
+        <section class="eval-shell" id="eval-anchor">
+          <div class="results-header">
+            <div>
+              <p class="section-eyebrow">Eval Demo</p>
+              <h3>Offline quality review</h3>
+            </div>
+            <button id="eval-button" type="button" class="primary-button small">Run eval demo</button>
+          </div>
+
+          <div id="eval-panel" class="eval-grid">
+            <div class="empty-state">
+              <h4>No eval report yet</h4>
+              <p>Run the evaluation demo to show exact match accuracy, schema pass rate, warning rate, and latency in a recruiter-friendly format.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer-bar">
+        <span>@BryteSikaStrategyAI</span>
+      </footer>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "betcopilot-ai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "check": "tsc --noEmit",
+    "dev:api": "wrangler dev apps/api-edge/src/index.ts --config apps/api-edge/wrangler.toml",
+    "dev:ui": "python -m http.server 4173 -d apps/demo-ui",
+    "dev": "npm run dev:api",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260410.0",
+    "@types/node": "^24.3.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4",
+    "wrangler": "^4.13.2"
+  }
+}

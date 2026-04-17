@@ -1,0 +1,40 @@
+name = "betcopilot-ai-api"
+main = "src/index.ts"
+compatibility_date = "2026-04-17"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "betcopilot-ai"
+database_id = "replace-with-cloudflare-d1-id"
+
+[[r2_buckets]]
+binding = "RAW_BUCKET"
+bucket_name = "betcopilot-ai-bronze"
+
+[[vectorize]]
+binding = "BET_MEMORY_INDEX"
+index_name = "betcopilot-ai-memory"
+
+[[queues.producers]]
+binding = "INGESTION_QUEUE"
+queue = "betcopilot-ai-ingestion"
+
+[[queues.producers]]
+binding = "EVAL_QUEUE"
+queue = "betcopilot-ai-evals"
+
+[ai]
+binding = "AI"
+
+[vars]
+APP_NAME = "BetCopilot AI"
+APP_TAGLINE = "AI-Powered Betting Intelligence"
+BRAND_FOOTER = "@BryteSikaStrategyAI"
+AI_GATEWAY_BASE_URL = "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}"
+ODDS_API_BASE_URL = "https://api.the-odds-api.com/v4"
+MODEL_PROVIDER = "deterministic"
+MODEL_NAME = "rule-based-mvp"
+MODEL_MOCK_MODE = "true"
+CONFIDENCE_THRESHOLD = "0.62"
+FEATURE_ENABLE_REAL_ODDS_PROVIDER = "false"

@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2023", "DOM"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node", "@cloudflare/workers-types"],
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@betcopilot/core-schemas": ["packages/core-schemas/src/index.ts"],
+      "@betcopilot/ingestion": ["packages/ingestion/src/index.ts"],
+      "@betcopilot/llm": ["packages/llm/src/index.ts"],
+      "@betcopilot/tools": ["packages/tools/src/index.ts"],
+      "@betcopilot/qa": ["packages/qa/src/index.ts"],
+      "@betcopilot/evals": ["packages/evals/src/index.ts"],
+      "@betcopilot/personalization": ["packages/personalization/src/index.ts"],
+      "@betcopilot/shared": ["packages/shared/src/index.ts"]
+    }
+  }
+}
