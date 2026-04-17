@@ -14,7 +14,7 @@ import {
   technicalJson
 } from "./components.js";
 
-const PUBLIC_API_BASE = "https://betcopilot-ai-showcase-api.brytesika-ai.workers.dev";
+const PUBLIC_API_BASE = "https://betcopilot-ai-showcase-api.bryte-sika.workers.dev";
 const isLocalHost = ["127.0.0.1", "localhost"].includes(window.location.hostname);
 const API_BASE =
   window.BETCOPILOT_API_BASE || (isLocalHost ? "http://127.0.0.1:8787" : PUBLIC_API_BASE);
