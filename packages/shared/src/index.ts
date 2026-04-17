@@ -11,6 +11,8 @@ export const BRAND = {
 export interface RuntimeConfig {
   modelProvider: string;
   modelName: string;
+  modelTask: string;
+  pipelineLabel: string;
   mockMode: boolean;
   confidenceThreshold: number;
   enableRealOddsProvider: boolean;
@@ -77,8 +79,12 @@ const readEnvString = (env: Record<string, unknown>, key: string) =>
   typeof env[key] === "string" ? (env[key] as string) : undefined;
 
 export const resolveRuntimeConfig = (env: Record<string, unknown>): RuntimeConfig => ({
-  modelProvider: readEnvString(env, "MODEL_PROVIDER") ?? "deterministic",
-  modelName: readEnvString(env, "MODEL_NAME") ?? "rule-based-mvp",
+  modelProvider: readEnvString(env, "MODEL_PROVIDER") ?? "cloudflare-workers-ai",
+  modelName: readEnvString(env, "MODEL_NAME") ?? "@cf/meta/llama-3.1-8b-instruct",
+  modelTask: readEnvString(env, "MODEL_TASK") ?? "structured_extraction",
+  pipelineLabel:
+    readEnvString(env, "PIPELINE_LABEL") ??
+    "LLM Extraction -> Rule Normalization -> API Enrichment -> QA Validation",
   mockMode: parseBoolean(readEnvString(env, "MODEL_MOCK_MODE"), true),
   confidenceThreshold: parseNumber(readEnvString(env, "CONFIDENCE_THRESHOLD"), 0.62),
   enableRealOddsProvider: parseBoolean(readEnvString(env, "FEATURE_ENABLE_REAL_ODDS_PROVIDER"), false)

@@ -1,0 +1,20 @@
+{
+  "name": "@betcopilot/api-showcase",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "wrangler deploy --dry-run --config wrangler.toml",
+    "dev": "wrangler dev src/index.ts --config wrangler.toml"
+  },
+  "dependencies": {
+    "@betcopilot/core-schemas": "0.1.0",
+    "@betcopilot/evals": "0.1.0",
+    "@betcopilot/ingestion": "0.1.0",
+    "@betcopilot/llm": "0.1.0",
+    "@betcopilot/qa": "0.1.0",
+    "@betcopilot/shared": "0.1.0",
+    "@betcopilot/tools": "0.1.0",
+    "hono": "^4.8.5"
+  }
+}

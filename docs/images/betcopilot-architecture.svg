@@ -1,0 +1,109 @@
+<svg width="1600" height="980" viewBox="0 0 1600 980" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="980" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFE"/>
+      <stop offset="1" stop-color="#EEF3FA"/>
+    </linearGradient>
+    <linearGradient id="navyStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#183058"/>
+      <stop offset="1" stop-color="#355A8D"/>
+    </linearGradient>
+    <linearGradient id="goldStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#C9972E"/>
+      <stop offset="1" stop-color="#E1C067"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#122347" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L10 5L0 10V0Z" fill="#36517F"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="980" rx="0" fill="url(#bg)"/>
+  <rect x="52" y="44" width="1496" height="892" rx="28" fill="#FFFFFF" stroke="#D8E0EB"/>
+  <text x="86" y="96" fill="#0C1630" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">BetCopilot AI</text>
+  <text x="86" y="126" fill="#B7861B" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">AI-Powered Betting Intelligence</text>
+  <text x="86" y="158" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">
+    Cloudflare-native applied AI pipeline for structured extraction, odds enrichment, QA, and evaluation.
+  </text>
+
+  <rect x="86" y="210" width="180" height="122" rx="18" fill="#F8FAFC" stroke="url(#navyStroke)" filter="url(#shadow)"/>
+  <text x="112" y="244" fill="#0C1630" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Input Channels</text>
+  <text x="112" y="276" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Text input</text>
+  <text x="112" y="301" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">URL input</text>
+  <text x="112" y="326" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Screenshot input</text>
+
+  <rect x="320" y="192" width="238" height="158" rx="18" fill="#EEF4FB" stroke="url(#navyStroke)" filter="url(#shadow)"/>
+  <text x="348" y="228" fill="#0C1630" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Cloudflare Workers</text>
+  <text x="348" y="256" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">API and orchestration</text>
+  <text x="348" y="281" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Input preprocessing</text>
+  <text x="348" y="306" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Upload and URL handling</text>
+  <text x="348" y="331" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Remote MCP hosting</text>
+
+  <rect x="612" y="192" width="252" height="158" rx="18" fill="#FFF6E1" stroke="url(#goldStroke)" filter="url(#shadow)"/>
+  <text x="640" y="228" fill="#0C1630" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Workers AI + AI Gateway</text>
+  <text x="640" y="256" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Structured extraction</text>
+  <text x="640" y="281" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Ambiguity handling</text>
+  <text x="640" y="306" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Explanation generation</text>
+  <text x="640" y="331" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Inference observability path</text>
+
+  <rect x="918" y="192" width="250" height="158" rx="18" fill="#EEF4FB" stroke="url(#navyStroke)" filter="url(#shadow)"/>
+  <text x="946" y="228" fill="#0C1630" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Deterministic Logic</text>
+  <text x="946" y="256" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Market normalization</text>
+  <text x="946" y="281" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Team and player aliases</text>
+  <text x="946" y="306" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Schema validation</text>
+  <text x="946" y="331" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Canonical market mapping</text>
+
+  <rect x="1218" y="176" width="284" height="190" rx="18" fill="#EEF4FB" stroke="url(#navyStroke)" filter="url(#shadow)"/>
+  <text x="1246" y="212" fill="#0C1630" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Tool Layer and Data Access</text>
+  <text x="1246" y="240" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Sports Data MCP Server</text>
+  <text x="1246" y="265" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Content Extraction MCP Server</text>
+  <text x="1246" y="290" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">QA and Eval MCP Server</text>
+  <text x="1246" y="315" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">External Sports Odds API</text>
+  <text x="1246" y="340" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Provider abstraction</text>
+
+  <rect x="320" y="468" width="308" height="174" rx="18" fill="#F7FAFF" stroke="url(#navyStroke)" filter="url(#shadow)"/>
+  <text x="348" y="504" fill="#0C1630" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Storage and Memory</text>
+  <text x="348" y="532" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">R2 for raw uploads and artifacts</text>
+  <text x="348" y="557" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">D1 for extractions, QA, evals, sessions</text>
+  <text x="348" y="582" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Vectorize for retrieval and alias memory</text>
+  <text x="348" y="607" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Future personalization support</text>
+
+  <rect x="670" y="450" width="330" height="210" rx="18" fill="#EDF9F3" stroke="#1E7A5F" filter="url(#shadow)"/>
+  <text x="698" y="486" fill="#0C1630" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Trust and Reliability</text>
+  <text x="698" y="514" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">QA checks and warning states</text>
+  <text x="698" y="539" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Confidence scoring and rule validation</text>
+  <text x="698" y="564" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Trace IDs and latency visibility</text>
+  <text x="698" y="589" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Operator-facing reliability controls</text>
+  <text x="698" y="614" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Inference routing aligned with AI Gateway</text>
+
+  <rect x="1050" y="450" width="236" height="210" rx="18" fill="#FFFFFF" stroke="#C7D2E3" filter="url(#shadow)"/>
+  <text x="1078" y="486" fill="#0C1630" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Product Outputs</text>
+  <text x="1078" y="514" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Recruiter demo UI</text>
+  <text x="1078" y="539" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Structured bet cards</text>
+  <text x="1078" y="564" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Live odds panel</text>
+  <text x="1078" y="589" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">QA and trust view</text>
+  <text x="1078" y="614" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Technical details drawer</text>
+
+  <rect x="1326" y="450" width="176" height="210" rx="18" fill="#FFFFFF" stroke="#C7D2E3" filter="url(#shadow)"/>
+  <text x="1354" y="486" fill="#0C1630" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Evaluation</text>
+  <text x="1354" y="514" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Offline eval runner</text>
+  <text x="1354" y="539" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Regression test set</text>
+  <text x="1354" y="564" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Metrics dashboard</text>
+  <text x="1354" y="589" fill="#55667D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">Latency and quality trends</text>
+
+  <line x1="266" y1="271" x2="320" y2="271" stroke="#36517F" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="558" y1="271" x2="612" y2="271" stroke="#36517F" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="864" y1="271" x2="918" y2="271" stroke="#36517F" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1168" y1="271" x2="1218" y2="271" stroke="#36517F" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <path d="M1043 350V396H835V450" stroke="#36517F" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M1360 366V408H835V450" stroke="#36517F" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M474 350V450" stroke="#36517F" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="628" y1="555" x2="670" y2="555" stroke="#36517F" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1000" y1="555" x2="1050" y2="555" stroke="#36517F" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1000" y1="594" x2="1326" y2="594" stroke="#36517F" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="1290" y="908" fill="#7A8799" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">@BryteSikaStrategyAI</text>
+</svg>

@@ -78,18 +78,25 @@ app.get("/", (c) =>
 );
 
 app.get("/v1/metadata", (c) =>
-  c.json(
-    {
-      product: BRAND,
-      runtime: {
-        platform: "Cloudflare Workers",
-        services: ["Workers AI", "AI Gateway", "R2", "D1", "Vectorize", "Queues"]
+  {
+    const config = resolveRuntimeConfig(c.env);
+    return c.json(
+      {
+        product: BRAND,
+        runtime: {
+          platform: "Cloudflare Workers",
+          services: ["Workers AI", "AI Gateway", "R2", "D1", "Vectorize", "Queues"],
+          modelProvider: config.modelProvider,
+          modelName: config.modelName,
+          modelTask: config.modelTask,
+          pipeline: config.pipelineLabel
+        },
+        footer
       },
-      footer
-    },
-    200,
-    jsonHeaders
-  )
+      200,
+      jsonHeaders
+    );
+  }
 );
 
 app.post("/v1/extract", async (c) => {

@@ -25,15 +25,17 @@
       <main class="page-flow">
         <section class="hero">
           <div class="hero-copy">
-            <p class="hero-kicker">Modern applied AI product demo</p>
-            <h2>Turn noisy betting language into structured, trusted intelligence.</h2>
+            <p class="hero-kicker">Modern applied AI decision product</p>
+            <h2>Turn unstructured betting language into structured, trusted intelligence.</h2>
             <p class="hero-text">
-              BetCopilot AI extracts bet candidates, normalizes markets, enriches live odds,
-              applies QA, and presents the result in a polished operator-friendly view.
+              BetCopilot AI extracts bet candidates, normalizes messy phrasing, enriches odds context,
+              applies QA, and reveals the technical trace in a product-grade interface built for demos,
+              recruiters, and hiring managers.
             </p>
             <div class="example-chip-row">
               <button class="example-chip" data-example="LeBron over 27.5 points and Lakers moneyline tonight">LeBron over 27.5 points and Lakers moneyline tonight</button>
               <button class="example-chip" data-example="Arsenal to win and both teams to score">Arsenal to win and both teams to score</button>
+              <button class="example-chip" data-example="Celtics -4.5 vs Heat">Celtics -4.5 vs Heat</button>
               <button class="example-chip" data-example="Analyze this bet slip screenshot">Analyze this bet slip screenshot</button>
             </div>
           </div>
@@ -42,9 +44,9 @@
             <div class="section-heading">
               <div>
                 <p class="section-eyebrow">Analyze Input</p>
-                <h3>Start with text, a URL, or screenshot context</h3>
+                <h3>Premium AI assistant workflow</h3>
               </div>
-              <span class="shell-badge">Recruiter-ready MVP</span>
+              <span class="shell-badge">Cloudflare-native MVP</span>
             </div>
 
             <div class="segmented-control" role="tablist" aria-label="Input mode selector">
@@ -67,16 +69,16 @@
                   <input id="source-label" type="text" placeholder="Recruiter demo sample" />
                 </label>
 
-                <label class="field url-only is-hidden" id="url-field">
+                <label class="field is-hidden" id="url-field">
                   <span>URL</span>
                   <input id="source-url" type="url" placeholder="https://example.com/article" />
                 </label>
               </div>
 
-              <div class="upload-panel screenshot-only is-hidden" id="upload-panel">
+              <div class="upload-panel is-hidden" id="upload-panel">
                 <div class="upload-copy">
                   <p class="upload-title">Screenshot Upload</p>
-                  <p class="upload-subtitle">Attach a bet slip or odds screen for the Phase 2 multimodal path.</p>
+                  <p class="upload-subtitle">Attach a bet slip or odds screen. The demo shows the multimodal handoff path without clutter.</p>
                 </div>
                 <label class="upload-button">
                   <input id="screenshot-file" type="file" accept="image/*" />
@@ -87,8 +89,9 @@
 
               <div class="primary-actions">
                 <button type="submit" class="primary-button" id="analyze-button">Analyze</button>
-                <button type="button" class="ghost-button" id="sample-button">Try an example</button>
+                <button type="button" class="ghost-button" id="sample-button">Try example</button>
               </div>
+              <p id="analysis-status" class="analysis-status" aria-live="polite"></p>
             </form>
           </section>
         </section>
@@ -97,15 +100,16 @@
           <div class="results-header">
             <div>
               <p class="section-eyebrow">Results</p>
-              <h3>BetCopilot AI response</h3>
+              <h3>Decision-oriented output</h3>
             </div>
             <button type="button" class="ghost-button is-hidden" id="copy-json-button">Copy technical JSON</button>
           </div>
 
           <div id="summary-panel" class="summary-panel">
             <div class="empty-state">
-              <h4>Ready for analysis</h4>
-              <p>Run a sample or submit your own betting text to see structured bets, QA, odds enrichment, and technical traceability.</p>
+              <div class="empty-illustration"></div>
+              <h4>Run an analysis to see structured bets, odds, and validation insights.</h4>
+              <p>BetCopilot AI will surface extracted bets, live market context, trust signals, and the underlying trace.</p>
             </div>
           </div>
 
@@ -119,7 +123,8 @@
               </div>
               <div id="bet-cards" class="stack-list">
                 <div class="empty-state compact">
-                  <p>No candidates yet.</p>
+                  <div class="empty-illustration"></div>
+                  <p>Structured bet cards will appear here after analysis.</p>
                 </div>
               </div>
             </section>
@@ -128,12 +133,13 @@
               <div class="panel-header">
                 <div>
                   <p class="section-eyebrow">Live Odds</p>
-                  <h4>Enrichment and market match</h4>
+                  <h4>Enrichment and matching</h4>
                 </div>
               </div>
               <div id="odds-panel" class="stack-list">
                 <div class="empty-state compact">
-                  <p>Odds enrichment appears here after analysis.</p>
+                  <div class="empty-illustration"></div>
+                  <p>Matched odds and provider context will appear here after analysis.</p>
                 </div>
               </div>
             </section>
@@ -142,12 +148,13 @@
               <div class="panel-header">
                 <div>
                   <p class="section-eyebrow">QA and Trust</p>
-                  <h4>Validation outcomes</h4>
+                  <h4>Validation signals</h4>
                 </div>
               </div>
               <div id="qa-panel" class="stack-list">
                 <div class="empty-state compact">
-                  <p>Trust and quality checks will appear here.</p>
+                  <div class="empty-illustration"></div>
+                  <p>QA outcomes, warnings, and trust signals will appear here.</p>
                 </div>
               </div>
             </section>
@@ -156,12 +163,28 @@
               <div class="panel-header">
                 <div>
                   <p class="section-eyebrow">Explanation</p>
-                  <h4>Why the system inferred these bets</h4>
+                  <h4>Natural-language interpretation</h4>
                 </div>
               </div>
-              <div id="explanation-panel" class="explanation-panel">
+              <div id="explanation-panel" class="stack-list">
                 <div class="empty-state compact">
-                  <p>Natural-language interpretation will appear here.</p>
+                  <div class="empty-illustration"></div>
+                  <p>The system explanation will summarize what was inferred and why.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="content-panel content-panel-wide">
+              <div class="panel-header">
+                <div>
+                  <p class="section-eyebrow">Technical Trace</p>
+                  <h4>Operational visibility</h4>
+                </div>
+              </div>
+              <div id="trace-panel" class="stack-list">
+                <div class="empty-state compact">
+                  <div class="empty-illustration"></div>
+                  <p>Model provider, model name, stage timing, latency, and trace ID will appear here.</p>
                 </div>
               </div>
             </section>
@@ -172,7 +195,7 @@
               <summary>View technical details</summary>
               <div class="technical-grid">
                 <section class="technical-card">
-                  <h5>Trace</h5>
+                  <h5>Trace metadata</h5>
                   <pre id="trace-output">Awaiting analysis...</pre>
                 </section>
                 <section class="technical-card">
@@ -188,15 +211,15 @@
           <div class="results-header">
             <div>
               <p class="section-eyebrow">Eval Demo</p>
-              <h3>Offline quality review</h3>
+              <h3>Offline evaluation framework</h3>
             </div>
             <button id="eval-button" type="button" class="primary-button small">Run eval demo</button>
           </div>
-
           <div id="eval-panel" class="eval-grid">
             <div class="empty-state">
-              <h4>No eval report yet</h4>
-              <p>Run the evaluation demo to show exact match accuracy, schema pass rate, warning rate, and latency in a recruiter-friendly format.</p>
+              <div class="empty-illustration"></div>
+              <h4>No evaluation report yet</h4>
+              <p>Run the eval demo to see exact match accuracy, field accuracy, schema pass rate, warning rate, and latency.</p>
             </div>
           </div>
         </section>

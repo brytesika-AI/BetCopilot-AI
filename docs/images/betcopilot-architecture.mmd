@@ -1,0 +1,18 @@
+flowchart LR
+    classDef input fill:#F8FAFC,stroke:#1E335C,color:#09162B,stroke-width:1.2px;
+    classDef edge fill:#EEF4FB,stroke:#1E335C,color:#09162B,stroke-width:1.2px;
+    classDef ai fill:#FFF6E1,stroke:#B7861B,color:#09162B,stroke-width:1.2px;
+    classDef data fill:#F7FAFF,stroke:#38598A,color:#09162B,stroke-width:1.2px;
+    classDef trust fill:#EDF9F3,stroke:#1E7A5F,color:#09162B,stroke-width:1.2px;
+    classDef output fill:#FFFFFF,stroke:#C7D2E3,color:#09162B,stroke-width:1.1px;
+
+    A[Input Channels<br/>Text<br/>URL<br/>Screenshot]:::input --> B[Cloudflare Workers<br/>API and ingestion<br/>preprocess and orchestration]:::edge
+    B --> C[Workers AI via AI Gateway<br/>structured extraction<br/>ambiguity handling<br/>explanations]:::ai
+    C --> D[Deterministic Logic<br/>market normalization<br/>team and player aliases<br/>schema validation]:::edge
+    D --> E[Remote MCP Tool Layer on Workers<br/>Sports Data MCP<br/>Content Extraction MCP<br/>QA and Eval MCP]:::edge
+    E --> F[External Sports Odds API]:::data
+    D --> G[Storage and Memory<br/>R2 raw artifacts<br/>D1 application records<br/>Vectorize retrieval and aliases]:::data
+    E --> H[Trust and Reliability<br/>QA checks<br/>confidence scoring<br/>trace IDs<br/>rule validation]:::trust
+    G --> H
+    H --> I[Product Outputs<br/>Recruiter demo UI<br/>bet cards<br/>live odds panel<br/>QA and technical drawer]:::output
+    H --> J[Evaluation Layer<br/>offline eval runner<br/>regression set<br/>metrics dashboard]:::output

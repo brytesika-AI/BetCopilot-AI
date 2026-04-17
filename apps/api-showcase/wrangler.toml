@@ -1,0 +1,16 @@
+name = "betcopilot-ai-showcase-api"
+main = "src/index.ts"
+compatibility_date = "2026-04-17"
+workers_dev = true
+
+[vars]
+APP_NAME = "BetCopilot AI"
+APP_TAGLINE = "AI-Powered Betting Intelligence"
+BRAND_FOOTER = "@BryteSikaStrategyAI"
+MODEL_PROVIDER = "cloudflare-workers-ai"
+MODEL_NAME = "@cf/meta/llama-3.1-8b-instruct"
+MODEL_TASK = "structured_extraction"
+PIPELINE_LABEL = "LLM Extraction -> Rule Normalization -> API Enrichment -> QA Validation"
+MODEL_MOCK_MODE = "true"
+CONFIDENCE_THRESHOLD = "0.62"
+FEATURE_ENABLE_REAL_ODDS_PROVIDER = "false"
