@@ -12,7 +12,8 @@ import {
   toPrettyJson
 } from "./components.js";
 
-const API_BASE = window.BETCOPILOT_API_BASE || "http://127.0.0.1:8787";
+const isLocalHost = ["127.0.0.1", "localhost"].includes(window.location.hostname);
+const API_BASE = window.BETCOPILOT_API_BASE || (isLocalHost ? "http://127.0.0.1:8787" : "");
 
 const form = document.getElementById("intake-form");
 const evalButton = document.getElementById("eval-button");
@@ -38,6 +39,225 @@ const evalPanel = document.getElementById("eval-panel");
 
 const state = {
   lastResponse: null
+};
+
+const MOCK_EXTRACTION_RESPONSE = {
+  request: {
+    traceId: "showcase_trace_betcopilot",
+    rawText: "LeBron over 27.5 points and Lakers moneyline tonight",
+    sourceType: "chat_text",
+    sourceMetadata: {
+      sourceLabel: "Public showcase mode"
+    },
+    receivedAt: "2026-04-17T02:05:00.000Z",
+    footer: "@BryteSikaStrategyAI"
+  },
+  extractedCandidates: [
+    {
+      candidateId: "cand_bron_points",
+      traceId: "showcase_trace_betcopilot",
+      rawText: "LeBron over 27.5 points and Lakers moneyline tonight",
+      rawFragment: "LeBron over 27.5 points",
+      sourceType: "chat_text",
+      sport: "basketball",
+      league: "NBA",
+      event: "Los Angeles Lakers vs Golden State Warriors",
+      team: "Los Angeles Lakers",
+      opponent: "Golden State Warriors",
+      player: "LeBron James",
+      marketType: "player_points_over",
+      selection: "LeBron James",
+      betSide: "over",
+      line: 27.5,
+      oddsText: "-112",
+      confidence: 0.9,
+      rationale: "Detected a player prop with explicit player, threshold, and stat category.",
+      ambiguityFlags: [],
+      normalizationNotes: ["player_alias_normalized", "market_canonical:player_points_over"],
+      footer: "@BryteSikaStrategyAI"
+    },
+    {
+      candidateId: "cand_lakers_ml",
+      traceId: "showcase_trace_betcopilot",
+      rawText: "LeBron over 27.5 points and Lakers moneyline tonight",
+      sourceType: "chat_text",
+      sport: "basketball",
+      league: "NBA",
+      event: "Los Angeles Lakers vs Golden State Warriors",
+      team: "Los Angeles Lakers",
+      opponent: "Golden State Warriors",
+      player: null,
+      marketType: "moneyline",
+      selection: "Los Angeles Lakers",
+      betSide: "team",
+      line: null,
+      oddsText: "-155",
+      confidence: 0.86,
+      rationale: "Detected a team win market from moneyline language.",
+      ambiguityFlags: [],
+      normalizationNotes: ["team_alias_normalized", "market_canonical:moneyline"],
+      footer: "@BryteSikaStrategyAI"
+    }
+  ],
+  normalizedCandidates: [],
+  eventResolutions: [
+    {
+      candidateId: "cand_bron_points",
+      status: "resolved",
+      provider: "SeededDemoSportsbookFeed",
+      eventId: "nba_lakers_warriors_001",
+      matchedEvent: "Los Angeles Lakers vs Golden State Warriors",
+      sport: "basketball",
+      league: "NBA",
+      team: "Los Angeles Lakers",
+      opponent: "Golden State Warriors",
+      commenceTime: "2026-04-17T23:30:00.000Z",
+      confidence: 0.93,
+      issues: [],
+      footer: "@BryteSikaStrategyAI"
+    },
+    {
+      candidateId: "cand_lakers_ml",
+      status: "resolved",
+      provider: "SeededDemoSportsbookFeed",
+      eventId: "nba_lakers_warriors_001",
+      matchedEvent: "Los Angeles Lakers vs Golden State Warriors",
+      sport: "basketball",
+      league: "NBA",
+      team: "Los Angeles Lakers",
+      opponent: "Golden State Warriors",
+      commenceTime: "2026-04-17T23:30:00.000Z",
+      confidence: 0.93,
+      issues: [],
+      footer: "@BryteSikaStrategyAI"
+    }
+  ],
+  oddsSnapshots: [
+    {
+      candidateId: "cand_bron_points",
+      status: "matched",
+      provider: "SeededDemoSportsbookFeed",
+      eventId: "nba_lakers_warriors_001",
+      matchedMarket: true,
+      markets: [
+        {
+          marketType: "player_points_over",
+          selection: "LeBron James",
+          betSide: "over",
+          line: 27.5,
+          oddsAmerican: -112,
+          bookmaker: "SeededDemoBook",
+          lastUpdated: "2026-04-17T02:05:00.000Z"
+        },
+        {
+          marketType: "player_points_under",
+          selection: "LeBron James",
+          betSide: "under",
+          line: 27.5,
+          oddsAmerican: -108,
+          bookmaker: "SeededDemoBook",
+          lastUpdated: "2026-04-17T02:05:00.000Z"
+        }
+      ],
+      issues: [],
+      footer: "@BryteSikaStrategyAI"
+    },
+    {
+      candidateId: "cand_lakers_ml",
+      status: "matched",
+      provider: "SeededDemoSportsbookFeed",
+      eventId: "nba_lakers_warriors_001",
+      matchedMarket: true,
+      markets: [
+        {
+          marketType: "moneyline",
+          selection: "Los Angeles Lakers",
+          betSide: "team",
+          line: null,
+          oddsAmerican: -155,
+          bookmaker: "SeededDemoBook",
+          lastUpdated: "2026-04-17T02:05:00.000Z"
+        },
+        {
+          marketType: "moneyline",
+          selection: "Golden State Warriors",
+          betSide: "team",
+          line: null,
+          oddsAmerican: 132,
+          bookmaker: "SeededDemoBook",
+          lastUpdated: "2026-04-17T02:05:00.000Z"
+        }
+      ],
+      issues: [],
+      footer: "@BryteSikaStrategyAI"
+    }
+  ],
+  qaResults: [
+    {
+      candidateId: "cand_bron_points",
+      status: "pass",
+      pass: true,
+      confidenceScore: 0.9,
+      issues: [],
+      flags: [],
+      footer: "@BryteSikaStrategyAI"
+    },
+    {
+      candidateId: "cand_lakers_ml",
+      status: "pass",
+      pass: true,
+      confidenceScore: 0.86,
+      issues: [],
+      flags: [],
+      footer: "@BryteSikaStrategyAI"
+    }
+  ],
+  trace: {
+    traceId: "showcase_trace_betcopilot",
+    status: "ok",
+    startedAt: "2026-04-17T02:05:00.000Z",
+    endedAt: "2026-04-17T02:05:00.312Z",
+    totalLatencyMs: 312,
+    model: {
+      provider: "showcase-demo",
+      name: "betcopilot-ui-demo-mode",
+      mode: "mock"
+    },
+    confidenceThreshold: 0.62,
+    steps: [
+      { stage: "ingest", status: "ok", latencyMs: 5, detail: "Public showcase input prepared." },
+      { stage: "extract", status: "ok", latencyMs: 42, detail: "Two candidate bets identified." },
+      { stage: "normalize", status: "ok", latencyMs: 21, detail: "Canonical market and entity mapping completed." },
+      { stage: "resolve_enrich", status: "ok", latencyMs: 163, detail: "Seeded odds and event matches applied." },
+      { stage: "qa", status: "ok", latencyMs: 62, detail: "Trust checks completed without warnings." },
+      { stage: "report", status: "ok", latencyMs: 19, detail: "Showcase response packaged for the public demo." }
+    ],
+    errors: [],
+    footer: "@BryteSikaStrategyAI"
+  },
+  footer: "@BryteSikaStrategyAI"
+};
+
+MOCK_EXTRACTION_RESPONSE.normalizedCandidates = MOCK_EXTRACTION_RESPONSE.extractedCandidates;
+
+const MOCK_EVAL_REPORT = {
+  runId: "eval_showcase_001",
+  suite: "synthetic-regression",
+  generatedAt: "2026-04-17T02:05:00.000Z",
+  summary: {
+    totalCases: 25,
+    passedCases: 23,
+    exactMatchRate: 0.92,
+    fieldLevelMatchRate: 0.96,
+    schemaPassRate: 1,
+    eventResolutionSuccessRate: 0.92,
+    qaWarningRate: 0.16,
+    averageConfidence: 0.83,
+    averageLatencyMs: 188
+  },
+  markdownSummary:
+    "BetCopilot AI showcase mode is presenting a seeded evaluation summary. The public demo emphasizes extraction quality, QA discipline, and latency visibility without requiring private infrastructure bindings.\n\n@BryteSikaStrategyAI",
+  footer: "@BryteSikaStrategyAI"
 };
 
 const examplePrompts = [
@@ -189,6 +409,22 @@ const renderEvalReport = (report) => {
   evalPanel.innerHTML = evalSummary(report.summary, report.markdownSummary);
 };
 
+const fetchJsonOrFallback = async (path, options, fallback) => {
+  if (!API_BASE) {
+    return structuredClone(fallback);
+  }
+
+  try {
+    const response = await fetch(`${API_BASE}${path}`, options);
+    if (!response.ok) {
+      throw new Error(`request_failed_${response.status}`);
+    }
+    return await response.json();
+  } catch {
+    return structuredClone(fallback);
+  }
+};
+
 const setMode = (mode) => {
   sourceTypeInput.value = mode;
   document.querySelectorAll(".segment").forEach((button) => {
@@ -264,29 +500,33 @@ form.addEventListener("submit", async (event) => {
     }
   };
 
-  const response = await fetch(`${API_BASE}/v1/extract`, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json"
+  const data = await fetchJsonOrFallback(
+    "/v1/extract",
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(payload)
     },
-    body: JSON.stringify(payload)
-  });
-
-  const data = await response.json();
+    MOCK_EXTRACTION_RESPONSE
+  );
   renderExtractionResponse(data);
 });
 
 evalButton.addEventListener("click", async () => {
   evalPanel.innerHTML = loadingBlocks(6);
 
-  const response = await fetch(`${API_BASE}/v1/evals/run`, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json"
+  const data = await fetchJsonOrFallback(
+    "/v1/evals/run",
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ suite: "synthetic-regression" })
     },
-    body: JSON.stringify({ suite: "synthetic-regression" })
-  });
-
-  const data = await response.json();
+    MOCK_EVAL_REPORT
+  );
   renderEvalReport(data);
 });
