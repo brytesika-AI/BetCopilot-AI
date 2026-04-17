@@ -55,6 +55,23 @@ export const SEEDED_EVENTS: SeededEvent[] = [
     ]
   },
   {
+    eventId: "nba_spurs_blazers_001",
+    provider: "SeededDemoSportsbookFeed",
+    sport: "basketball",
+    league: "NBA",
+    homeTeam: "San Antonio Spurs",
+    awayTeam: "Portland Trail Blazers",
+    commenceTime: "2026-04-18T02:00:00.000Z",
+    markets: [
+      { marketType: "moneyline", selection: "San Antonio Spurs", betSide: "team", line: null, oddsAmerican: -145, bookmaker: "SeededDemoBook" },
+      { marketType: "moneyline", selection: "Portland Trail Blazers", betSide: "team", line: null, oddsAmerican: 124, bookmaker: "SeededDemoBook" },
+      { marketType: "point_spread", selection: "San Antonio Spurs", betSide: "team", line: -3.5, oddsAmerican: -110, bookmaker: "SeededDemoBook" },
+      { marketType: "point_spread", selection: "Portland Trail Blazers", betSide: "team", line: 3.5, oddsAmerican: -110, bookmaker: "SeededDemoBook" },
+      { marketType: "player_points_over", selection: "Victor Wembanyama", betSide: "over", line: 24.5, oddsAmerican: -108, bookmaker: "SeededDemoBook" },
+      { marketType: "player_points_under", selection: "Victor Wembanyama", betSide: "under", line: 24.5, oddsAmerican: -112, bookmaker: "SeededDemoBook" }
+    ]
+  },
+  {
     eventId: "epl_arsenal_chelsea_001",
     provider: "SeededDemoSportsbookFeed",
     sport: "soccer",

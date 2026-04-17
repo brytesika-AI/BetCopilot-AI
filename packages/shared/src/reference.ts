@@ -41,6 +41,18 @@ export const TEAM_REFERENCES: TeamReference[] = [
     aliases: ["heat", "miami heat", "miami"]
   },
   {
+    canonical: "San Antonio Spurs",
+    sport: "basketball",
+    league: "NBA",
+    aliases: ["spurs", "san antonio spurs", "san antonio"]
+  },
+  {
+    canonical: "Portland Trail Blazers",
+    sport: "basketball",
+    league: "NBA",
+    aliases: ["blazers", "trail blazers", "portland trail blazers", "portland", "balzers"]
+  },
+  {
     canonical: "Arsenal",
     sport: "soccer",
     league: "EPL",
@@ -99,6 +111,13 @@ export const PLAYER_REFERENCES: PlayerReference[] = [
     league: "NFL",
     team: "Kansas City Chiefs",
     aliases: ["mahomes", "patrick mahomes"]
+  },
+  {
+    canonical: "Victor Wembanyama",
+    sport: "basketball",
+    league: "NBA",
+    team: "San Antonio Spurs",
+    aliases: ["wembanyama", "victor wembanyama", "victor wembanyama's", "wemby"]
   }
 ];
 

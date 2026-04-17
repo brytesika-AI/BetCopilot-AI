@@ -3,6 +3,7 @@ import {
   emptyState,
   evalSummary,
   explanationCard,
+  infoCallout,
   loadingBlocks,
   betCard,
   oddsCard,
@@ -46,6 +47,18 @@ const evalPanel = document.getElementById("eval-panel");
 
 const state = {
   lastResponse: null
+};
+
+const isUnsupportedResult = (response) => {
+  const candidates = response.normalizedCandidates ?? [];
+  return (
+    candidates.length > 0 &&
+    candidates.every(
+      (candidate) =>
+        candidate.marketType === "unknown" ||
+        (!candidate.selection && candidate.sport === "unknown")
+    )
+  );
 };
 
 const baseEvalReport = {
@@ -585,6 +598,9 @@ const renderSummary = (response) => {
       averageConfidence,
       sourceType: prettyLabel(response.request?.sourceType ?? "unknown"),
       pipelineStatus: response.trace?.status ?? "warning",
+      note: isUnsupportedResult(response)
+        ? "The API responded successfully, but this input does not contain a supported MVP betting market. Try explicit phrasing such as 'Spurs moneyline' or 'Wembanyama over 24.5 points.'"
+        : "BetCopilot AI converted unstructured input into normalized betting intelligence with validation, enrichment, and traceability.",
       stages: [
         { label: "Extracted", status: candidates.length > 0 ? "ok" : "warning" },
         { label: "Normalized", status: candidates.length > 0 ? "ok" : "warning" },
@@ -632,6 +648,14 @@ const renderBets = (response) => {
   const candidates = response.normalizedCandidates ?? [];
   const qaResults = response.qaResults ?? [];
 
+  if (isUnsupportedResult(response)) {
+    betCards.innerHTML = infoCallout(
+      "API connected, but the phrasing is unsupported",
+      "The current MVP handles explicit betting language. Narrative text like this should be rewritten as a clear market, for example 'Spurs moneyline' or 'Victor Wembanyama over 24.5 points.'"
+    );
+    return;
+  }
+
   betCards.innerHTML =
     candidates.length === 0
       ? emptyState("No candidates identified", "Run an analysis to see structured bet candidates with confidence and QA state.")
@@ -674,6 +698,14 @@ const buildExplanationText = (response) => {
       title: "No confident betting interpretation",
       body: "BetCopilot AI could not identify a supported market from the submitted input.",
       chips: []
+    };
+  }
+
+  if (isUnsupportedResult(response)) {
+    return {
+      title: "Why this result was marked for review",
+      body: "The API returned successfully, but the input reads more like narrative sports commentary than an explicit supported bet. The MVP expects clearer market phrasing so it can normalize, match odds, and validate confidently.",
+      chips: ["Live API response", "Unsupported phrasing", `${response.trace?.totalLatencyMs ?? 0} ms`]
     };
   }
 

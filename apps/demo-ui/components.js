@@ -82,14 +82,15 @@ export const summaryOverviewCard = ({
   averageConfidence,
   sourceType,
   stages,
-  pipelineStatus
+  pipelineStatus,
+  note
 }) => `
   <article class="summary-card summary-card-hero">
     <div class="summary-hero-top">
       <div>
         <span class="summary-label">Extraction Summary</span>
         <h4 class="summary-hero-title">${candidateCount} Bet Candidate${candidateCount === 1 ? "" : "s"} Found</h4>
-        <p class="summary-hero-note">BetCopilot AI converted unstructured input into normalized betting intelligence with validation, enrichment, and traceability.</p>
+        <p class="summary-hero-note">${escapeHtml(note || "BetCopilot AI converted unstructured input into normalized betting intelligence with validation, enrichment, and traceability.")}</p>
       </div>
       <div class="summary-hero-badges">
         ${confidencePill(averageConfidence)}
@@ -318,6 +319,16 @@ export const explanationCard = (title, body, chips = []) => `
     <h4 class="card-title">${escapeHtml(title)}</h4>
     <p class="explanation-text">${escapeHtml(body)}</p>
     ${chips.length ? `<div class="issue-chip-row">${chips.map((chip) => issueChip(chip)).join("")}</div>` : ""}
+  </article>
+`;
+
+export const infoCallout = (title, body) => `
+  <article class="info-callout">
+    <div class="info-callout-icon">i</div>
+    <div>
+      <h4 class="card-title">${escapeHtml(title)}</h4>
+      <p class="explanation-text">${escapeHtml(body)}</p>
+    </div>
   </article>
 `;
 

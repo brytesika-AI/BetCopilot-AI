@@ -47,7 +47,7 @@ const createDraft = (params: Omit<ExtractedBetDraft, "footer">): ExtractedBetDra
 
 const buildPlayerPropDrafts = (input: IngestionInput): ExtractedBetDraft[] => {
   const playerPattern =
-    /(LeBron(?: James)?|Patrick Mahomes|Mahomes|Jayson Tatum|Tatum)\s+(over|under|o|u)\s*(\d+(?:\.\d+)?)\s*(points|pts|rebounds|boards|assists|passing touchdowns|pass tds|tds?)/gi;
+    /(LeBron(?: James)?|Patrick Mahomes|Mahomes|Jayson Tatum|Tatum|Victor Wembanyama|Wembanyama|Wemby)\s+(over|under|o|u)\s*(\d+(?:\.\d+)?)\s*(points|pts|rebounds|boards|assists|passing touchdowns|pass tds|tds?)/gi;
   const drafts: ExtractedBetDraft[] = [];
 
   for (const match of input.rawText.matchAll(playerPattern)) {
@@ -127,7 +127,7 @@ const buildBttsDrafts = (input: IngestionInput): ExtractedBetDraft[] => {
 const buildTeamDrafts = (input: IngestionInput): ExtractedBetDraft[] => {
   const teams = findTeamInText(input.rawText);
   const teamPattern =
-    /(Los Angeles Lakers|Lakers|Golden State Warriors|Warriors|Boston Celtics|Celtics|Miami Heat|Heat|Arsenal|Chelsea|Real Madrid|Barcelona|Chiefs|Kansas City Chiefs|Bills|Buffalo Bills)(?:\s+(moneyline|ml|to win)\b|\s*([+-]\d+(?:\.\d+)?))/gi;
+    /(Los Angeles Lakers|Lakers|Golden State Warriors|Warriors|Boston Celtics|Celtics|Miami Heat|Heat|San Antonio Spurs|Spurs|Portland Trail Blazers|Blazers|Balzers|Arsenal|Chelsea|Real Madrid|Barcelona|Chiefs|Kansas City Chiefs|Bills|Buffalo Bills)(?:\s+(moneyline|ml|to win)\b|\s*([+-]\d+(?:\.\d+)?))/gi;
   const drafts: ExtractedBetDraft[] = [];
 
   for (const match of input.rawText.matchAll(teamPattern)) {
